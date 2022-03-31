@@ -63,17 +63,6 @@ cmdparse:	mov	rbx, cmdbuf	; load command buffer
 .cnf_str:	db	"??Command not found", 10
 .cnf_len:	dd	$-.cnf_str
 
-
-			; http://www.int80h.org/strlen/
-strlen:	xor	rcx, rcx	; set RCX to 0
-	not	rcx	; set RCX to the highest possible value
-	xor	al, al	; set AL to 0
-	cld		; clear direction flag
-repne	scasb		; search for null terminator; RCX is now -strlen-2
-	not	rcx	; RCX is now strlen+1
-	dec	rcx	; RCX is now strlen
-	ret
-
 go_right:	mov	al, [curx]
 	add	al, 1
 	mov	bl, [fieldw]
