@@ -148,7 +148,7 @@ print_pos:
 	mov	edx, [.msg_dim_start_len]
 	call	puts
 	mov	al, [fieldw]
-	mov	bl, [fieldw]
+	mov	bl, [fieldh]
 	add	al, '0'
 	add	bl, '0'
 	call	.printxy
