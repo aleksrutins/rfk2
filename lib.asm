@@ -153,21 +153,13 @@ print_pos:
 	add	bl, '0'
 	call	.printxy
 	ret
-.printxy:	mov	rsi, tmpb
-	mov	edx, 1
-	mov	byte [tmpb], al
-	call	puts
-	mov	byte [tmpb], ','
-	call	puts
-	mov	byte [tmpb], bl
-	call	puts
-	mov	rsi, .msg_pos_end
-	mov	edx, [.msg_pos_end_len]
+.printxy:	mov	rsi, xymsg
+	mov	edx, 7
+	mov	byte [xymsg + 1], al
+	mov	byte [xymsg + 4], bl
 	call	puts
 	ret
-.msg_cpos_start: db	'Current position: ('
+.msg_cpos_start: db	'Current position: '
 .msg_cpos_start_len: dd	$-.msg_cpos_start
-.msg_pos_end: db	')', 10
-.msg_pos_end_len:	dd	$-.msg_pos_end
-.msg_dim_start: db	'Field dimensions: ('
+.msg_dim_start: db	'Field dimensions: '
 .msg_dim_start_len: dd	$-.msg_dim_start

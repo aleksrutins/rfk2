@@ -48,6 +48,6 @@ curx:	db	0
 cury:	db	0
 cmdbuf:	times 	256	db 	0
 do_exit:	db	0
-tmpb:	db	0
+xymsg:	db	'( ,  )', 10
 endmsg:	db	"You have reached the end.", 10
 l_endmsg:	dd	$-endmsg
