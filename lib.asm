@@ -22,10 +22,13 @@ prompt:	push	rsi
 	pop	rsi
 	call	gets
 	ret
-.sprompt:	db	'] '
-.lprompt:	dd	$-.sprompt
+.sprompt:
+	db	'] '
+.lprompt:
+	dd	$-.sprompt
 
-cmdparse:	mov	rbx, cmdbuf	; load command buffer
+cmdparse:
+	mov	rbx, cmdbuf	; load command buffer
 .empty:	cmp	byte [rbx], 10	; check for empty command
 	je	.end
 .quit:	cmp	dword [rbx], 'quit'	; check for quit
@@ -60,8 +63,10 @@ cmdparse:	mov	rbx, cmdbuf	; load command buffer
 	xor	rbx, rbx		; some
 	xor	bl, bl		; stuff
 	ret			; return
-.cnf_str:	db	"??Command not found", 10
-.cnf_len:	dd	$-.cnf_str
+.cnf_str:
+	db	"??Command not found", 10
+.cnf_len:
+	dd	$-.cnf_str
 
 go_right:	mov	al, [curx]
 	add	al, 1
@@ -74,15 +79,18 @@ go_right:	mov	al, [curx]
 	mov	edx, [.msg_len]
 	call	puts
 	jmp	.end
-.failed:	mov	rsi, endmsg
+.failed:
+	mov	rsi, endmsg
 	mov	edx, [l_endmsg]
 	call	puts
 .end:	call	print_pos
 	ret
 .msg:	db	"Moved right.", 10
-.msg_len:	dd	$-.msg
+.msg_len:
+	dd	$-.msg
 
-go_down:	mov	al, [cury]
+go_down:
+	mov	al, [cury]
 	add	al, 1
 	mov	bl, [fieldh]
 	add	bl, 1
@@ -93,15 +101,18 @@ go_down:	mov	al, [cury]
 	mov	edx, [.msg_len]
 	call	puts
 	jmp	.end
-.failed:	mov	rsi, endmsg
+.failed:
+	mov	rsi, endmsg
 	mov	edx, [l_endmsg]
 	call	puts
 .end:	call	print_pos
 	ret
 .msg:	db	"Moved down.", 10
-.msg_len:	dd	$-.msg
+.msg_len:
+	dd	$-.msg
 
-go_left:	mov	al, [curx]
+go_left:
+	mov	al, [curx]
 	cmp	al, 0
 	je	.failed
 	sub	al, 1
@@ -116,7 +127,8 @@ go_left:	mov	al, [curx]
 .end:	call	print_pos
 	ret
 .msg:	db	"Moved left.", 10
-.msg_len:	dd	$-.msg
+.msg_len:
+	dd	$-.msg
 
 go_up:	mov	al, [cury]
 	cmp	al, 0
@@ -133,7 +145,8 @@ go_up:	mov	al, [cury]
 .end:	call	print_pos
 	ret
 .msg:	db	"Moved up.", 10
-.msg_len:	dd	$-.msg
+.msg_len:
+	dd	$-.msg
 
 print_pos:
 	mov	rsi, .msg_cpos_start

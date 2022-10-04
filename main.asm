@@ -36,7 +36,8 @@ msg:	db	'---------------------------', 10
 	db	"up	Go up, and see what's there.", 10
 	db	'pos	Print the current position and field dimensions.', 10
 	db	10
-msg_len:	dd	$-msg
+msg_len:
+	dd	$-msg
 field:	dd	0, 0, 0, 0, 0, 10
 	dd	0, 0, 0, 0, 0, 10
 	dd	0, 0, 0, 0, 0, 10
@@ -50,4 +51,5 @@ cmdbuf:	times 	256	db 	0
 do_exit:	db	0
 xymsg:	db	'( ,  )', 10
 endmsg:	db	"You have reached the end.", 10
-l_endmsg:	dd	$-endmsg
+l_endmsg:
+	dd	$-endmsg
