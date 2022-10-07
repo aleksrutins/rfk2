@@ -1,3 +1,19 @@
+	global puts
+	global gets
+	global exit
+	global prompt
+	global cmdparse
+	extern cmdbuf
+	extern do_exit
+	extern curx
+	extern cury
+	extern fieldh
+	extern fieldw
+	extern endmsg
+	extern l_endmsg
+	extern xymsg
+
+	section .text
 puts:	mov	rax, 1
 	mov	rdi, 1
 	syscall

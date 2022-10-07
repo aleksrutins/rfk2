@@ -1,7 +1,7 @@
 .PHONY: rfk2
 all: rfk2
-main.o: *.asm
-	nasm -felf64 main.asm -o $@
+%.o: %.asm
+	nasm -felf64 $< -o $@
 
-rfk2: main.o
-	ld $< -o $@
+rfk2: main.o lib.o nki.o
+	ld *.o -o $@

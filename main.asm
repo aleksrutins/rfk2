@@ -1,11 +1,11 @@
-	global	_start
+	global	_start, msg, msg_len, field, fieldh, fieldw, curx, cury, cmdbuf, do_exit, xymsg, endmsg, l_endmsg
+	extern puts, prompt, cmdparse, exit
 
 	section .text
-	%include "lib.asm"
 _start:	mov	rsi, msg
 	mov	edx, [msg_len]
 	call	puts
-cmdloop:	mov	rsi, cmdbuf
+cmdloop:mov	rsi, cmdbuf
 	mov	rdx, 255
 	call	prompt
 	call	cmdparse
